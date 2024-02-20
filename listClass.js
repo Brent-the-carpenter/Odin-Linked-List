@@ -161,6 +161,32 @@ class Linkedlist {
     }
     return `List is shorter than given index`;
   }
+
+  removeAt(index) {
+    if (index < 0) {
+      return `Invalid index`;
+    }
+    if (this.head === null) {
+      return `List is empty`;
+    }
+    if (index === 0) {
+      this.head = this.head.next;
+    }
+    let currentIndex = 1;
+    let current = this.head;
+    let previous;
+    while (current !== null) {
+      if (currentIndex === index) {
+        previous.next = current.next;
+
+        return `${current.value} has been removed`;
+      }
+      previous = current;
+      current = current.next;
+      currentIndex += 1;
+    }
+    return `Index was not found`;
+  }
 }
 
 module.exports = Linkedlist;
